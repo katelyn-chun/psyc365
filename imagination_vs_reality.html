@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is It Real? 🐻 The Brain's Reality Check</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FFB3C6;
+    --lavender: #C9B8F0;
+    --mint: #B8EDD9;
+    --peach: #FFD4B8;
+    --sky: #B8DFF0;
+    --yellow: #FFF0B8;
+    --rose: #F7889A;
+    --violet: #9B7FD4;
+    --sage: #7DC4A8;
+    --coral: #F4A574;
+    --blue: #6BB5D8;
+    --gold: #E8C84A;
+    --cream: #FFF8F0;
+    --dark: #3D2C4E;
+    --mid: #6B5380;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── ANIMATED BACKGROUND ── */
+  .bg-blobs {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: drift 18s ease-in-out infinite;
+  }
+  .blob-1 { width: 500px; height: 500px; background: var(--pink); top: -100px; left: -100px; animation-delay: 0s; }
+  .blob-2 { width: 400px; height: 400px; background: var(--lavender); top: 30%; right: -80px; animation-delay: -6s; }
+  .blob-3 { width: 350px; height: 350px; background: var(--mint); bottom: 10%; left: 20%; animation-delay: -12s; }
+  .blob-4 { width: 300px; height: 300px; background: var(--peach); top: 60%; right: 20%; animation-delay: -4s; }
+
+  @keyframes drift {
+    0%, 100% { transform: translate(0,0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.95); }
+  }
+
+  /* ── WRAPPER ── */
+  .wrapper { position: relative; z-index: 1; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 16px; left: 50%; transform: translateX(-50%);
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(16px);
+    border-radius: 50px;
+    padding: 10px 28px;
+    display: flex; gap: 6px; align-items: center;
+    box-shadow: 0 4px 24px rgba(61,44,78,0.12);
+    z-index: 100;
+    border: 1.5px solid rgba(255,255,255,0.9);
+  }
+  nav a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mid);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+  nav a:hover { background: var(--lavender); color: var(--dark); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 100px 24px 60px;
+  }
+
+  .bear-row {
+    display: flex; gap: 12px; margin-bottom: 28px;
+    animation: floatRow 3s ease-in-out infinite;
+  }
+  @keyframes floatRow {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .bear { font-size: 48px; display: inline-block; }
+  .bear.real { animation: spin 6s linear infinite; }
+  .bear.imagined { animation: glitch 4s ease-in-out infinite; opacity: 0.65; filter: blur(0.5px); }
+  .bear.confused { animation: wobble 2s ease-in-out infinite; }
+
+  @keyframes spin { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+  @keyframes glitch {
+    0%,90%,100%{transform:none;filter:blur(0.5px)}
+    92%{transform:translateX(-3px);filter:blur(2px) hue-rotate(40deg)}
+    94%{transform:translateX(3px);filter:blur(0)}
+    96%{transform:translateX(-2px);filter:blur(1.5px)}
+  }
+  @keyframes wobble {
+    0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)}
+  }
+
+  .hero-label {
+    font-size: 12px; font-weight: 800; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--violet);
+    background: var(--lavender);
+    padding: 6px 18px; border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 7vw, 80px);
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 20px;
+  }
+  h1 em { color: var(--violet); font-style: italic; }
+
+  .hero-sub {
+    font-size: 18px; font-weight: 600; color: var(--mid);
+    max-width: 560px; line-height: 1.6; margin-bottom: 36px;
+  }
+
+  .citation-pill {
+    background: rgba(255,255,255,0.8);
+    border: 1.5px solid var(--lavender);
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 700;
+    max-width: 520px;
+    line-height: 1.5;
+  }
+  .citation-pill span { color: var(--violet); }
+
+  .scroll-hint {
+    margin-top: 48px;
+    font-size: 13px; font-weight: 700; color: var(--mid);
+    animation: bounce 2s ease-in-out infinite;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--dark);
+  }
+
+  p { font-size: 17px; line-height: 1.75; color: var(--mid); margin-bottom: 16px; }
+  p strong { color: var(--dark); }
+
+  /* ── CARD GRID ── */
+  .card-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); margin-top: 32px; }
+
+  .card {
+    background: rgba(255,255,255,0.7);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1.5px solid rgba(255,255,255,0.9);
+    box-shadow: 0 4px 20px rgba(61,44,78,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(61,44,78,0.15); }
+  .card-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+  .card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .card p { font-size: 15px; margin-bottom: 0; }
+
+  /* ── INTERACTIVE GAME ── */
+  #game-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .game-box {
+    background: rgba(255,255,255,0.75);
+    border-radius: 28px;
+    padding: 48px 40px;
+    border: 2px solid rgba(255,255,255,0.95);
+    box-shadow: 0 8px 40px rgba(61,44,78,0.12);
+    text-align: center;
+  }
+
+  .game-prompt {
+    font-size: 22px; font-weight: 700; color: var(--dark);
+    margin-bottom: 10px;
+    min-height: 56px;
+  }
+
+  .game-sub {
+    font-size: 15px; color: var(--mid); margin-bottom: 32px; font-weight: 600;
+  }
+
+  .grating-display {
+    width: 180px; height: 180px;
+    border-radius: 20px;
+    margin: 0 auto 32px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 4px 24px rgba(61,44,78,0.15);
+  }
+
+  canvas#gratingCanvas {
+    width: 100%; height: 100%;
+    display: block;
+  }
+
+  .bear-meter {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; margin-bottom: 28px; flex-wrap: wrap;
+  }
+  .meter-label { font-size: 13px; font-weight: 800; color: var(--mid); }
+  .meter-bears { display: flex; gap: 4px; }
+  .meter-bear { font-size: 22px; transition: all 0.3s; filter: grayscale(1); }
+  .meter-bear.lit { filter: grayscale(0); transform: scale(1.2); }
+
+  .game-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px; font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn:hover { transform: scale(1.05); }
+  .btn:active { transform: scale(0.97); }
+  .btn-real { background: var(--mint); color: var(--dark); box-shadow: 0 4px 16px rgba(124,196,168,0.4); }
+  .btn-imagined { background: var(--lavender); color: var(--dark); box-shadow: 0 4px 16px rgba(201,184,240,0.4); }
+  .btn-start { background: var(--violet); color: white; box-shadow: 0 4px 16px rgba(155,127,212,0.4); }
+  .btn-restart { background: var(--peach); color: var(--dark); box-shadow: 0 4px 16px rgba(255,212,184,0.4); }
+
+  .feedback-bubble {
+    margin-top: 24px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-size: 16px; font-weight: 700;
+    opacity: 0;
+    transition: all 0.3s;
+    min-height: 58px;
+  }
+  .feedback-bubble.show { opacity: 1; }
+  .feedback-bubble.correct { background: var(--mint); color: var(--dark); }
+  .feedback-bubble.wrong { background: var(--pink); color: var(--dark); }
+
+  .score-display {
+    margin-top: 20px;
+    font-size: 14px; font-weight: 800; color: var(--mid);
+  }
+
+  /* ── BRAIN DIAGRAM ── */
+  .brain-card {
+    background: rgba(255,255,255,0.75);
+    border-radius: 28px;
+    padding: 40px;
+    border: 2px solid rgba(255,255,255,0.95);
+    box-shadow: 0 8px 40px rgba(61,44,78,0.12);
+    margin-top: 32px;
+  }
+
+  .brain-regions {
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    margin-top: 24px;
+  }
+
+  .region-pill {
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+    border: 2px solid transparent;
+    position: relative;
+  }
+  .region-pill:hover { transform: translateY(-4px); }
+  .region-pill.active { border-color: var(--violet); box-shadow: 0 6px 20px rgba(155,127,212,0.25); }
+  .region-pill h4 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .region-pill .role { font-size: 12px; font-weight: 700; color: var(--mid); margin-bottom: 10px; }
+  .region-pill .detail { font-size: 13px; color: var(--mid); line-height: 1.5; display: none; }
+  .region-pill.active .detail { display: block; }
+  .region-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+
+  /* ── TIMELINE ── */
+  .timeline { margin-top: 32px; position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 24px; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(to bottom, var(--lavender), var(--mint));
+    border-radius: 4px;
+  }
+  .tl-item {
+    display: flex; gap: 24px; margin-bottom: 32px;
+    padding-left: 60px; position: relative;
+  }
+  .tl-dot {
+    position: absolute; left: 13px;
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(61,44,78,0.15);
+  }
+  .tl-body { flex: 1; }
+  .tl-body h4 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .tl-body p { font-size: 15px; margin-bottom: 0; }
+
+  /* ── VERDICT SECTION ── */
+  .verdict-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    margin-top: 32px;
+  }
+  .verdict-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .verdict-card .v-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+  .verdict-card h4 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .verdict-card p { font-size: 14px; margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 48px 24px 60px;
+    font-size: 14px; color: var(--mid); font-weight: 600;
+  }
+  footer .bear-footer { font-size: 28px; margin-bottom: 12px; }
+
+  /* ── DIVIDER ── */
+  .wavy-divider {
+    text-align: center; font-size: 24px;
+    padding: 16px 0; opacity: 0.4;
+    letter-spacing: 6px;
+  }
+
+  /* ── AI USE BANNER ── */
+  .ai-banner {
+    background: var(--yellow);
+    border-radius: 16px;
+    padding: 20px 28px;
+    margin-top: 32px;
+    border: 1.5px solid var(--gold);
+    font-size: 14px; line-height: 1.6; color: var(--dark);
+    font-weight: 600;
+  }
+  .ai-banner strong { font-weight: 800; }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media(max-width:600px) {
+    nav { display: none; }
+    .game-box { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="blob blob-4"></div>
+</div>
+
+<nav>
+  <a href="#rationale">Why?</a>
+  <a href="#design">Design</a>
+  <a href="#game-section">Try It</a>
+  <a href="#brain">Brain</a>
+  <a href="#results">Results</a>
+  <a href="#so-what">So What?</a>
+</nav>
+
+<div class="wrapper">
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="bear-row">
+    <span class="bear real">🐻</span>
+    <span class="bear confused">🤔</span>
+    <span class="bear imagined">🫧</span>
+  </div>
+
+  <div class="hero-label">COGS 365 · Cognitive Neuroscience</div>
+
+  <h1>Is That Bear <em>Real</em>?<br>Or Did You Imagine It?</h1>
+
+  <p class="hero-sub">
+    Your brain sees a bear. But did you actually see one — or did your imagination conjure it? New research reveals the neural mechanism that keeps your inner world and outer reality apart.
+  </p>
+
+  <div class="citation-pill">
+    <span>Dijkstra, von Rein, Kok & Fleming (2025)</span><br>
+    "A neural basis for distinguishing imagination from reality"<br>
+    <em>Neuron</em>, Vol. 113, Issue 15 · DOI: 10.1016/j.neuron.2025.05.015
+  </div>
+
+  <div class="scroll-hint">
+    <span>scroll to explore 🐾</span>
+    <span style="font-size:20px">↓</span>
+  </div>
+</div>
+
+<!-- ══ RATIONALE ══ -->
+<section id="rationale" class="fade-in">
+  <div class="section-tag" style="background:var(--pink);color:var(--dark)">🌸 The Puzzle</div>
+  <h2>Your brain is a remarkably bad liar detector… for itself.</h2>
+
+  <p>When you imagine something vividly — a bear, an apple, a face — <strong>many of the same brain regions fire as when you actually perceive it.</strong> The brain reuses its own perceptual machinery for mental imagery. It's efficient, but it creates a problem: how does the brain ever know the difference between what's real and what's imagined?</p>
+
+  <p>Previous research showed that imagination and perception overlap in the brain. But the <strong>mechanism</strong> that keeps reality and fantasy sorted was unknown. That was the gap this study set out to fill.</p>
+
+  <div class="card-grid">
+    <div class="card" style="background: rgba(255,179,198,0.25);">
+      <span class="card-icon">🧸</span>
+      <h3>The Overlap Problem</h3>
+      <p>Imagining a bear activates similar visual cortex regions as seeing one. So why don't we constantly mistake imaginations for reality?</p>
+    </div>
+    <div class="card" style="background: rgba(201,184,240,0.25);">
+      <span class="card-icon">🫧</span>
+      <h3>The Knowledge Gap</h3>
+      <p>The brain mechanism behind <em>perceptual reality monitoring</em> — sorting real from imagined signals — was previously unknown.</p>
+    </div>
+    <div class="card" style="background: rgba(184,237,217,0.25);">
+      <span class="card-icon">💡</span>
+      <h3>The Big Question</h3>
+      <p>Is there a single neural "reality meter" in the brain? Where is it, and how does it work?</p>
+    </div>
+  </div>
+</section>
+
+<div class="wavy-divider">🐾 · 🐾 · 🐾</div>
+
+<!-- ══ RESEARCH DESIGN ══ -->
+<section id="design" class="fade-in">
+  <div class="section-tag" style="background:var(--lavender);color:var(--dark)">🔬 The Experiment</div>
+  <h2>Making bears appear — and disappear — in the brain.</h2>
+
+  <p>The team developed a clever fMRI paradigm to pit imagination against perception in real time. Here's how it worked:</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--pink);">🐻</div>
+      <div class="tl-body">
+        <h4>26 human participants in an fMRI scanner</h4>
+        <p>Each trial, they were cued to imagine a tilted grating (striped bars) of a specific orientation — like a bear trying to see stripes.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--lavender);">🌫️</div>
+      <div class="tl-body">
+        <h4>A faint real stimulus — or nothing — was shown</h4>
+        <p>A barely-visible grating was embedded in visual noise. Sometimes it matched what they were imagining (congruent). Sometimes it didn't. Sometimes there was nothing at all.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--mint);">✅</div>
+      <div class="tl-body">
+        <h4>Participants judged: "Was something really there?"</h4>
+        <p>They also rated how vividly they'd imagined the grating. This gave researchers two continuous measures: <strong>perceptual reality judgment</strong> and <strong>imagery vividness.</strong></p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--peach);">🧠</div>
+      <div class="tl-body">
+        <h4>fMRI measured brain activity trial-by-trial</h4>
+        <p>Crucially, researchers could correlate neural signals with each individual judgment — catching the brain in the act of confusing imagination for reality.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="brain-card">
+    <h3 style="font-weight:800; font-size:18px; color:var(--dark); margin-bottom:6px;">📐 The Reality Threshold Model</h3>
+    <p style="margin-bottom:0;">The researchers tested a computational model: the brain doesn't separate imagery from perception — it adds them together into a <strong>combined "reality signal."</strong> If that signal crosses a threshold → "it's real." If not → "must be my imagination." Simple, elegant, and testable.</p>
+  </div>
+</section>
+
+<!-- ══ INTERACTIVE GAME ══ -->
+<div id="game-section" class="fade-in" style="padding: 80px 24px; max-width:900px; margin:0 auto;">
+  <div class="section-tag" style="background:var(--sky);color:var(--dark)">🎮 Try It Yourself</div>
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,44px); margin-bottom:12px; color:var(--dark);">Can YOU tell real from imagined?</h2>
+  <p style="font-size:17px;line-height:1.75;color:var(--mid);margin-bottom:24px;">Experience what participants felt. Each round you'll be asked to imagine a tilted grating. Then you'll see a noisy image — and judge whether something was really there. Watch how vivid imagination can fool you!</p>
+
+  <div class="game-box">
+    <div id="game-state-start">
+      <div style="font-size:56px;margin-bottom:16px;">🐻‍❄️</div>
+      <p class="game-prompt">Ready to test your reality monitoring?</p>
+      <p class="game-sub">6 trials · each one a little different</p>
+      <button class="btn btn-start" onclick="startGame()">🎯 Start the experiment</button>
+    </div>
+
+    <div id="game-state-play" style="display:none;">
+      <p class="game-prompt" id="gPrompt">Imagine a bear walking left → right</p>
+      <p class="game-sub" id="gSub">Now look at the noisy image below...</p>
+
+      <div class="grating-display">
+        <canvas id="gratingCanvas" width="180" height="180"></canvas>
+      </div>
+
+      <div class="bear-meter">
+        <span class="meter-label">Imagery vividness:</span>
+        <div class="meter-bears" id="meterBears">
+          <span class="meter-bear">🐻</span>
+          <span class="meter-bear">🐻</span>
+          <span class="meter-bear">🐻</span>
+          <span class="meter-bear">🐻</span>
+          <span class="meter-bear">🐻</span>
+        </div>
+        <span id="vividLabel" style="font-size:13px;font-weight:700;color:var(--violet)"></span>
+      </div>
+
+      <p style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:16px;">Was something really in the image?</p>
+      <div class="game-buttons">
+        <button class="btn btn-real" onclick="answer(true)">🟢 Yes, it was real!</button>
+        <button class="btn btn-imagined" onclick="answer(false)">🫧 No, just my imagination</button>
+      </div>
+
+      <div class="feedback-bubble" id="feedback"></div>
+      <div class="score-display" id="scoreDisplay"></div>
+    </div>
+
+    <div id="game-state-end" style="display:none;">
+      <div style="font-size:52px;margin-bottom:16px;" id="endEmoji">🐻</div>
+      <p class="game-prompt" id="endTitle">Results!</p>
+      <p class="game-sub" id="endSub"></p>
+      <div id="endExplain" style="background:var(--lavender);border-radius:16px;padding:20px;margin:20px 0;font-size:15px;color:var(--dark);font-weight:600;line-height:1.6;text-align:left;"></div>
+      <button class="btn btn-restart" onclick="restartGame()">🔄 Try Again</button>
+    </div>
+  </div>
+</div>
+
+<div class="wavy-divider">🧠 · 🧠 · 🧠</div>
+
+<!-- ══ BRAIN REGIONS ══ -->
+<section id="brain" class="fade-in">
+  <div class="section-tag" style="background:var(--peach);color:var(--dark)">🧠 The Neural Circuit</div>
+  <h2>Three brain regions. One reality check.</h2>
+  <p>Tap each region to learn its role in keeping your inner bear from becoming an outer bear.</p>
+
+  <div class="brain-regions">
+    <div class="region-pill" style="background:rgba(255,179,198,0.3)" onclick="toggleRegion(this)">
+      <span class="region-icon">👁️</span>
+      <h4>Fusiform Gyrus</h4>
+      <div class="role">🎛️ The Reality Meter</div>
+      <div class="detail">Located on the underside of the temporal lobe, behind your temples. This mid-level visual region integrates both perceptual and imagery signals into a single combined "reality signal." When imagination is vivid enough, its activity rivals real perception — triggering false alarms. It's the brain's thermometer for "how real is this?"</div>
+    </div>
+    <div class="region-pill" style="background:rgba(201,184,240,0.3)" onclick="toggleRegion(this)">
+      <span class="region-icon">🧩</span>
+      <h4>Anterior Insula</h4>
+      <div class="role">🔔 The Decision Maker</div>
+      <div class="detail">Part of the prefrontal cortex, previously known for metacognition — thinking about your own mind. This study showed it reads the fusiform's signal and makes the binary call: "real" or "imagined." Its activity increased whenever participants said something was real, even when it wasn't.</div>
+    </div>
+    <div class="region-pill" style="background:rgba(184,237,217,0.3)" onclick="toggleRegion(this)">
+      <span class="region-icon">📡</span>
+      <h4>Intraparietal Sulcus</h4>
+      <div class="role">📏 The Signal Tracker</div>
+      <div class="detail">A groove in the parietal lobe that co-modulated with both imagery vividness and reality judgments — suggesting it helps track signal strength and attention during the reality-monitoring process.</div>
+    </div>
+    <div class="region-pill" style="background:rgba(255,240,184,0.5)" onclick="toggleRegion(this)">
+      <span class="region-icon">🌐</span>
+      <h4>dmPFC</h4>
+      <div class="role">💭 The Metacognitive Hub</div>
+      <div class="detail">The dorsomedial prefrontal cortex — part of the brain's "thinking about thinking" network. It encoded the outcome of the binary reality judgment and communicated with the fusiform gyrus, forming a feedback loop between sensory signals and conscious decisions.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESULTS ══ -->
+<section id="results" class="fade-in">
+  <div class="section-tag" style="background:var(--mint);color:var(--dark)">📊 Key Findings</div>
+  <h2>When imagination goes vivid, reality gets blurry.</h2>
+
+  <div class="brain-card" style="margin-bottom:24px;">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="flex:1;min-width:200px;">
+        <h3 style="font-weight:800;font-size:17px;color:var(--dark);margin-bottom:8px;">Finding 1: The Fusiform Overlap</h3>
+        <p style="font-size:15px;margin-bottom:0;">The same neural networks that responded to <em>how real</em> something looked also responded to <em>how vivid</em> an imagined stimulus was — especially in the bilateral fusiform gyrus. The brain uses the same region to measure both.</p>
+      </div>
+    </div>
+    <!-- Simple visual: vividness vs reality bar chart -->
+    <div style="background:rgba(255,255,255,0.6);border-radius:14px;padding:20px;">
+      <div style="font-size:13px;font-weight:800;color:var(--mid);margin-bottom:30px;text-align:center;">FUSIFORM GYRUS ACTIVATION</div>
+      <div style="display:flex;gap:12px;align-items:flex-end;height:100px;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:60px;background:var(--sky);border-radius:8px 8px 0 0;height:55px;transition:height 0.5s;" class="bar" data-h="55"></div>
+          <span style="font-size:11px;font-weight:700;color:var(--mid);text-align:center;">Low<br>Vividness</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:60px;background:var(--lavender);border-radius:8px 8px 0 0;height:85px;transition:height 0.5s;" class="bar" data-h="85"></div>
+          <span style="font-size:11px;font-weight:700;color:var(--mid);text-align:center;">High<br>Vividness</span>
+        </div>
+        <div style="width:2px;background:var(--lavender);height:100%;margin:0 8px;"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:60px;background:var(--pink);border-radius:8px 8px 0 0;height:50px;transition:height 0.5s;" class="bar" data-h="50"></div>
+          <span style="font-size:11px;font-weight:700;color:var(--mid);text-align:center;">"Not<br>Real"</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="width:60px;background:var(--rose);border-radius:8px 8px 0 0;height:90px;transition:height 0.5s;" class="bar" data-h="90"></div>
+          <span style="font-size:11px;font-weight:700;color:var(--mid);text-align:center;">"It's<br>Real!"</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;justify-content:center;margin-top:12px;">
+        <span style="font-size:11px;font-weight:800;color:var(--violet);">⬅ Imagery Vividness</span>
+        <span style="font-size:11px;font-weight:800;color:var(--rose);">Reality Judgment ➡</span>
+      </div>
+      <p style="font-size:12px;color:var(--mid);text-align:center;margin-top:10px;margin-bottom:0;font-weight:600;">Both scales correlate with fusiform activation — same region, same signal</p>
+    </div>
+  </div>
+
+  <div class="brain-card">
+    <h3 style="font-weight:800;font-size:17px;color:var(--dark);margin-bottom:8px;">Finding 2: Trial-by-Trial Confusion Prediction</h3>
+    <p style="font-size:15px;margin-bottom:20px;">When participants accidentally mistook their imagination for reality, the fusiform gyrus showed it coming. Activity fluctuations in this region predicted confusion errors on a <strong>trial-by-trial basis</strong> — especially in congruent imagery trials, where imagination and perception aligned.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+      <div style="background:rgba(184,237,217,0.4);border-radius:14px;padding:18px;text-align:center;">
+        <div style="font-size:30px;margin-bottom:8px;">✅</div>
+        <div style="font-size:13px;font-weight:800;color:var(--dark);">Congruent Trial</div>
+        <div style="font-size:12px;color:var(--mid);margin-top:4px;">Imagine left-tilt → see faint left-tilt grating → FG fires strongly → "It's real!"</div>
+      </div>
+      <div style="background:rgba(255,179,198,0.4);border-radius:14px;padding:18px;text-align:center;">
+        <div style="font-size:30px;margin-bottom:8px;">❌</div>
+        <div style="font-size:13px;font-weight:800;color:var(--dark);">Incongruent Trial</div>
+        <div style="font-size:12px;color:var(--mid);margin-top:4px;">Imagine right-tilt → see faint left-tilt grating → signals cancel → lower FG activity → "Just imagined it"</div>
+      </div>
+      <div style="background:rgba(201,184,240,0.4);border-radius:14px;padding:18px;text-align:center;">
+        <div style="font-size:30px;margin-bottom:8px;">🫧</div>
+        <div style="font-size:13px;font-weight:800;color:var(--dark);">False Alarm</div>
+        <div style="font-size:12px;color:var(--mid);margin-top:4px;">Nothing shown → vivid imagination alone crosses the threshold → "I swear I saw something!"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wavy-divider">🌸 · 🌸 · 🌸</div>
+
+<!-- ══ SO WHAT ══ -->
+<section id="so-what" class="fade-in">
+  <div class="section-tag" style="background:var(--peach);color:var(--dark)">💬 Why We Should Care</div>
+  <h2>From fuzzy gratings to hallucinations.</h2>
+
+  <p>The fusiform gyrus as a "reality meter" isn't just an elegant finding — it has real implications for understanding psychiatric conditions and future technologies.</p>
+
+  <div class="verdict-grid">
+    <div class="verdict-card" style="background:rgba(255,179,198,0.25);">
+      <span class="v-icon">🧩</span>
+      <h4>Schizophrenia</h4>
+      <p>Hallucinations may arise when the fusiform reality signal is chronically over-activated, causing internally generated images to consistently cross the "real" threshold.</p>
+    </div>
+    <div class="verdict-card" style="background:rgba(201,184,240,0.25);">
+      <span class="v-icon">🥽</span>
+      <h4>Virtual Reality</h4>
+      <p>Understanding when imagined experiences start to feel real could help design more immersive VR — or more importantly, safety guardrails for it.</p>
+    </div>
+    <div class="verdict-card" style="background:rgba(184,237,217,0.25);">
+      <span class="v-icon">🫠</span>
+      <h4>Aphantasia</h4>
+      <p>People who can't form mental images may have a consistently low fusiform signal during imagery. This model offers a neurological lens for understanding the condition.</p>
+    </div>
+    <div class="verdict-card" style="background:rgba(255,240,184,0.5);">
+      <span class="v-icon">💊</span>
+      <h4>Psychiatric Treatment</h4>
+      <p>If the fusiform signal is the target, future interventions might modulate this specific region to reduce hallucination severity.</p>
+    </div>
+  </div>
+
+  <div class="brain-card" style="margin-top:32px;">
+    <h3 style="font-weight:800;font-size:18px;color:var(--dark);margin-bottom:16px;">🔍 Strengths & Limitations</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <div style="font-size:13px;font-weight:800;color:var(--sage);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">✅ Strengths</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">🎯 Elegant within-subject design</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">📐 Computational model validated against real data</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">🔁 Trial-by-trial prediction of confusion errors</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">🧪 Rigorous fMRI cluster correction (FWE p<0.05)</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:800;color:var(--rose);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">⚠️ Limitations</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">👥 Small sample (n = 26)</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">🌫️ Simple gratings only — not complex imagery</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">👁️ Only visual modality tested</li>
+          <li style="font-size:14px;color:var(--mid);font-weight:600;">🔗 Correlational — causality not established</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1.5px solid rgba(107,83,128,0.15);">
+      <div style="font-size:13px;font-weight:800;color:var(--violet);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">🐻 Take-home message</div>
+      <p style="font-size:16px;font-weight:700;color:var(--dark);margin-bottom:0;">Your brain doesn't have separate boxes for "real" and "imagined." It has a single meter — the fusiform gyrus — that combines both signals and calls anything above a threshold real. Vivid imagination doesn't just feel real. To your brain, for a moment, it <em>is</em>.</p>
+    </div>
+  </div>
+
+  <div class="ai-banner">
+    <strong>🤖 AI Use Disclosure</strong><br>
+    Claude (Anthropic) was used to help design and build this interactive website, including the layout, color palette, game mechanic, and written content. The scientific content was drawn directly from the Dijkstra et al. (2025) paper and verified against the source. All interpretive choices and presentation framing were made by the student group. We used AI as a creative and technical tool, not to replace our own engagement with the paper.
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="bear-footer">🐻🫧🐻</div>
+  <div>Dijkstra, N., von Rein, T., Kok, P., & Fleming, S. M. (2025). A neural basis for distinguishing imagination from reality. <em>Neuron</em>, 113(15), 2536–2542.e4.</div>
+  <div style="margin-top:8px;opacity:0.6;">COGS 365 · University of British Columbia · April 2026</div>
+</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── FADE IN ON SCROLL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── BRAIN REGION TOGGLE ──
+function toggleRegion(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.region-pill').forEach(p => p.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+
+// ── GAME ENGINE ──
+const trials = [
+  { stimulus: true,  congruent: true,  vividness: 4, correct: true,
+    prompt: "Imagine a bear walking LEFT ← to RIGHT →",
+    explain: "You were imagining the grating AND it was really there — a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
+  { stimulus: false, congruent: true,  vividness: 5, correct: false,
+    prompt: "Imagine a bright sun rising over mountains ☀️",
+    explain: "Nothing was really there — but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm! 🫧" },
+  { stimulus: true,  congruent: false, vividness: 2, correct: true,
+    prompt: "Imagine a bear sleeping curled up 🐻",
+    explain: "The grating was present, but your imagery was incongruent (different orientation) and low vividness. The real signal dominated — clean perception. ✅" },
+  { stimulus: false, congruent: false, vividness: 1, correct: false,
+    prompt: "Don't really try to imagine anything specific 💭",
+    explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal — easy 'not real' call. 💤" },
+  { stimulus: true,  congruent: true,  vividness: 5, correct: true,
+    prompt: "Imagine the MOST vivid striped pattern you can 🌈",
+    explain: "Stimulus present + maximally vivid congruent imagery = fusiform overdrive. You almost certainly said 'real' — and you were right, but the signal was so strong it could have fooled you even if nothing was there! ⚡" },
+  { stimulus: false, congruent: true,  vividness: 3, correct: false,
+    prompt: "Imagine a medium-vivid tilted bear pattern 🐻〰️",
+    explain: "Nothing real — just moderate imagery. Depending on your threshold, you may have been fooled. This is the sweet spot where Dijkstra et al. found the most interesting individual differences. 🎯" },
+];
+
+let current = 0, score = 0, results = [];
+
+function drawNoise(isReal, congruent, vividness) {
+  const canvas = document.getElementById('gratingCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  // noise background
+  const imgData = ctx.createImageData(W,H);
+  for(let i=0; i<imgData.data.length; i+=4){
+    const v = Math.random()*200+28;
+    imgData.data[i]=imgData.data[i+1]=imgData.data[i+2]=v;
+    imgData.data[i+3]=255;
+  }
+  ctx.putImageData(imgData,0,0);
+
+  if(isReal) {
+    // draw faint grating
+    const angle = congruent ? Math.PI/4 : -Math.PI/4;
+    ctx.save();
+    ctx.translate(W/2, H/2);
+    ctx.rotate(angle);
+    const strength = 0.12 + vividness*0.03;
+    for(let x=-W; x<W; x+=14) {
+      ctx.fillStyle = `rgba(200,180,255,${strength})`;
+      ctx.fillRect(x, -H, 7, H*2);
+    }
+    ctx.restore();
+  }
+}
+
+function updateVividnessMeter(v) {
+  const bears = document.querySelectorAll('.meter-bear');
+  const labels = ['😴','😌','🤔','😲','🤩'];
+  bears.forEach((b,i) => b.classList.toggle('lit', i < v));
+  document.getElementById('vividLabel').textContent = labels[v-1] || '';
+}
+
+function startGame() {
+  current = 0; score = 0; results = [];
+  document.getElementById('game-state-start').style.display = 'none';
+  document.getElementById('game-state-end').style.display = 'none';
+  document.getElementById('game-state-play').style.display = 'block';
+  loadTrial();
+}
+
+function loadTrial() {
+  const t = trials[current];
+  document.getElementById('gPrompt').textContent = t.prompt;
+  document.getElementById('gSub').textContent = `Trial ${current+1} of ${trials.length} — look closely at the noise...`;
+  document.getElementById('feedback').className = 'feedback-bubble';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('scoreDisplay').textContent = `Score: ${score}/${current}`;
+  updateVividnessMeter(t.vividness);
+
+  setTimeout(() => drawNoise(t.stimulus, t.congruent, t.vividness), 300);
+}
+
+function answer(saidReal) {
+  const t = trials[current];
+  const correct = saidReal === t.stimulus;
+  if(correct) score++;
+  results.push(correct);
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback-bubble show ' + (correct ? 'correct' : 'wrong');
+  fb.textContent = correct
+    ? (t.stimulus ? '🟢 Correct! Something was really there.' : '🟢 Correct! Nothing was there — you resisted the imagery!')
+    : (t.stimulus ? '❌ Miss! Something was faintly present — your imagery overcame it.' : '❌ False alarm! Nothing was there — vivid imagery fooled you!');
+
+  document.getElementById('scoreDisplay').textContent = `Score: ${score}/${current+1}`;
+
+  setTimeout(() => {
+    current++;
+    if(current < trials.length) {
+      loadTrial();
+    } else {
+      showEnd();
+    }
+  }, 2000);
+}
+
+function showEnd() {
+  document.getElementById('game-state-play').style.display = 'none';
+  document.getElementById('game-state-end').style.display = 'block';
+
+  const pct = score/trials.length;
+  let emoji, title, sub;
+  if(pct >= 5/6) { emoji='🐻🏆'; title='Excellent reality monitor!'; sub='Your fusiform gyrus kept imagery and perception neatly separated. Dijkstra et al. would be impressed.'; }
+  else if(pct >= 3/6) { emoji='🐻🫧'; title='Pretty good — with a few slips!'; sub='Some vivid imagery sneaked past your reality threshold. This is exactly what the study was about!'; }
+  else { emoji='🫧🫧'; title='Your imagination ran wild!'; sub='High vividness imagery consistently crossed your reality threshold. You might have interesting individual differences in fusiform sensitivity!'; }
+
+  document.getElementById('endEmoji').textContent = emoji;
+  document.getElementById('endTitle').textContent = `${title} (${score}/${trials.length})`;
+  document.getElementById('endSub').textContent = sub;
+  document.getElementById('endExplain').innerHTML = `<strong>🧠 What just happened in your brain:</strong><br><br>Each trial, your fusiform gyrus was combining the imagery signal (from what you were asked to imagine) with the perceptual signal (from what was on screen). When those signals added up and crossed your personal threshold → "real." The trials where you made errors are exactly the conditions Dijkstra et al. found most revealing: high-vividness congruent imagery in the absence of a real stimulus is when the system breaks down — and when understanding it matters most for conditions like schizophrenia.`;
+}
+
+function restartGame() {
+  document.getElementById('game-state-end').style.display = 'none';
+  document.getElementById('game-state-start').style.display = 'block';
+}
+
+// Draw initial noise on load
+window.addEventListener('load', () => {
+  const canvas = document.getElementById('gratingCanvas');
+  if(canvas) {
+    const ctx = canvas.getContext('2d');
+    const imgData = ctx.createImageData(180,180);
+    for(let i=0;i<imgData.data.length;i+=4){
+      const v=Math.random()*200+28;
+      imgData.data[i]=imgData.data[i+1]=imgData.data[i+2]=v;imgData.data[i+3]=255;
+    }
+    ctx.putImageData(imgData,0,0);
+  }
+});
+</script>
+</body>
+</html>
