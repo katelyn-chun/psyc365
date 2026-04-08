@@ -315,8 +315,8 @@
     position: relative;
   }
   .region-pill:hover { transform: translateY(-4px); }
-  .region-pill h4 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
-  .region-pill .detail { font-size: 13px; color: var(--mid);}
+  .region-pill h4 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .region-pill .detail { font-size: 15px; color: var(--mid);}
   .region-pill.active .detail { display: block; }
   .region-pill .detail ul { padding-left: 20px; margin-left: 0;}
 
@@ -351,12 +351,11 @@
     margin-top: 32px;
   }
   .verdict-card {
-    border-radius: 20px;
+    border-radius: 18px;
     padding: 28px 24px;
     text-align: center;
   }
-  .verdict-card .v-icon { font-size: 40px; margin-bottom: 12px; display: block; }
-  .verdict-card h4 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .verdict-card h4 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
   .verdict-card p { font-size: 14px; margin-bottom: 0; }
 
   /* ── FOOTER ── */
@@ -413,7 +412,7 @@
   <a href="#game-section">Try It</a>
   <a href="#variables">Variables</a>
   <a href="#results">Results</a>
-  <a href="#so-what">So What?</a>
+  <a href="#discussion">Discussion</a>
 </nav>
 
 <div class="wrapper">
@@ -690,33 +689,26 @@
 
 <div class="wavy-divider">🌸 · 🌸 · 🌸</div>
 
-<!-- ══ SO WHAT ══ -->
-<section id="so-what" class="fade-in">
+<!-- ══ DISCUSSION ══ -->
+<section id="discussion" class="fade-in">
   <div class="section-tag" style="background:var(--peach);color:var(--dark)">💬 Why We Should Care</div>
-  <h2>From fuzzy gratings to hallucinations.</h2>
-
-  <p>The fusiform gyrus as a "reality meter" isn't just an elegant finding it has real implications for understanding psychiatric conditions and future technologies.</p>
-
+  <h2>Author Interpretations + Implications</h2>
   <div class="verdict-grid">
     <div class="verdict-card" style="background:rgba(255,179,198,0.25);">
-      <span class="v-icon">🧩</span>
-      <h4>Schizophrenia</h4>
-      <p>Hallucinations may arise when the fusiform reality signal is chronically over-activated, causing internally generated images to consistently cross the "real" threshold.</p>
+      <h4>Interpretations 🐼</h4>
+      <p>
+        The authors of the study interpreted the results as evidence for a <b>two-stage neural mechanism</b> that allows the brain to distinguish between imagination and reality. They emphasize that the <i>Reality Signal</i> is <u>summed</u> together, rather than maintained separately, in the fusiform gyrus by the perception and imagination channels of the brain. 
+      </p>
+      <p>
+        Additionally, the authors state that when the combined strength of the <i>Reality Signal</i> crosses a <b>certain (internal) threshold</b>, the brain infers the signal <u>reflects external reality</u>, supporting the "reality threshold" model. They also interpret the anterior insula to "read out" sensory evidence to make a decision for the real/not real judgment. 
+      </p>
+      <p>
+        Their results also lead to the idea that <i>confusions between imagination and reality</i> occur when sensory activity created by an <b>internal image</b> is <u>strong enough to mimic the activity</u> usually produced by a real stimulus. 
+      </p>
     </div>
     <div class="verdict-card" style="background:rgba(201,184,240,0.25);">
-      <span class="v-icon">🥽</span>
-      <h4>Virtual Reality</h4>
+      <h4>Implications 🐻‍❄️</h4>
       <p>Understanding when imagined experiences start to feel real could help design more immersive VR or more importantly, safety guardrails for it.</p>
-    </div>
-    <div class="verdict-card" style="background:rgba(184,237,217,0.25);">
-      <span class="v-icon">🫠</span>
-      <h4>Aphantasia</h4>
-      <p>People who can't form mental images may have a consistently low fusiform signal during imagery. This model offers a neurological lens for understanding the condition.</p>
-    </div>
-    <div class="verdict-card" style="background:rgba(255,240,184,0.5);">
-      <span class="v-icon">💊</span>
-      <h4>Psychiatric Treatment</h4>
-      <p>If the fusiform signal is the target, future interventions might modulate this specific region to reduce hallucination severity.</p>
     </div>
   </div>
 
@@ -750,7 +742,7 @@
 
   <div class="ai-banner">
     <strong>🤖 AI Use Disclosure</strong><br>
-    Claude (Anthropic) was used to help design and build this interactive website, including the layout, color palette, game mechanic, and written content. The scientific content was drawn directly from the Dijkstra et al. (2025) paper and verified against the source. All interpretive choices and presentation framing were made by the student group. We used AI as a creative and technical tool, not to replace our own engagement with the paper.
+    Claude (Anthropic) was used to help design and build this interactive website, including the layout, color palette, and game mechanics. The scientific content was drawn directly from the Dijkstra et al. (2025) paper and verified against the source. All interpretive choices and presentation framing were made by the student group. We used AI as a creative and technical tool, not to replace our own engagement with the paper.
   </div>
 </section>
 
