@@ -315,12 +315,10 @@
     position: relative;
   }
   .region-pill:hover { transform: translateY(-4px); }
-  .region-pill.active { border-color: var(--violet); box-shadow: 0 6px 20px rgba(155,127,212,0.25); }
   .region-pill h4 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
-  .region-pill .role { font-size: 12px; font-weight: 700; color: var(--mid); margin-bottom: 10px; }
-  .region-pill .detail { font-size: 13px; color: var(--mid); line-height: 1.5; display: none; }
+  .region-pill .detail { font-size: 13px; color: var(--mid);}
   .region-pill.active .detail { display: block; }
-  .region-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+  .region-pill .detail ul { padding-left: 20px; margin-left: 0;}
 
   /* ── TIMELINE ── */
   .timeline { margin-top: 32px; position: relative; }
@@ -413,7 +411,7 @@
   <a href="#rationale">Why?</a>
   <a href="#design">Design</a>
   <a href="#game-section">Try It</a>
-  <a href="#brain">Brain</a>
+  <a href="#variables">Variables</a>
   <a href="#results">Results</a>
   <a href="#so-what">So What?</a>
 </nav>
@@ -579,35 +577,47 @@
 <div class="wavy-divider">🧠 · 🧠 · 🧠</div>
 
 <!-- ══ BRAIN REGIONS ══ -->
-<section id="brain" class="fade-in">
-  <div class="section-tag" style="background:var(--peach);color:var(--dark)">🧠 The Neural Circuit</div>
-  <h2>Three brain regions. One reality check.</h2>
-  <p>Tap each region to learn its role in keeping your inner bear from becoming an outer bear.</p>
-
+<section id="variables" class="fade-in">
+  <div class="section-tag" style="background:var(--peach);color:var(--dark)">Variables</div>
+  <h2>Independent +  Dependent Variables</h2>
   <div class="brain-regions">
-    <div class="region-pill" style="background:rgba(255,179,198,0.3)" onclick="toggleRegion(this)">
-      <span class="region-icon">👁️</span>
-      <h4>Fusiform Gyrus</h4>
-      <div class="role">🎛️ The Reality Meter</div>
-      <div class="detail">Located on the underside of the temporal lobe, behind your temples. This mid-level visual region integrates both perceptual and imagery signals into a single combined "reality signal." When imagination is vivid enough, its activity rivals real perception — triggering false alarms. It's the brain's thermometer for "how real is this?"</div>
-    </div>
-    <div class="region-pill" style="background:rgba(201,184,240,0.3)" onclick="toggleRegion(this)">
-      <span class="region-icon">🧩</span>
-      <h4>Anterior Insula</h4>
-      <div class="role">🔔 The Decision Maker</div>
-      <div class="detail">Part of the prefrontal cortex, previously known for metacognition — thinking about your own mind. This study showed it reads the fusiform's signal and makes the binary call: "real" or "imagined." Its activity increased whenever participants said something was real, even when it wasn't.</div>
-    </div>
     <div class="region-pill" style="background:rgba(184,237,217,0.3)" onclick="toggleRegion(this)">
-      <span class="region-icon">📡</span>
-      <h4>Intraparietal Sulcus</h4>
-      <div class="role">📏 The Signal Tracker</div>
-      <div class="detail">A groove in the parietal lobe that co-modulated with both imagery vividness and reality judgments — suggesting it helps track signal strength and attention during the reality-monitoring process.</div>
+      <h4>Independent</h4>
+      <div class="detail">
+        <ul>
+          <li><b>Stimulus presence:</b> if a stimulus was actually shown to the participant. 
+            <ul>
+              <li>The variable was manipulated through the separation of either having, or not having a grating present.</li> 
+              <li>On one half of the trials, the left or right tilted gratings gradually appeared within dynamic noise, while the other half of participants were shown pure dynamic white noise.</li>
+            </ul>
+          </li>
+          <li><b>Imagery congruency:</b> how the participants were instructed to imagine the orientation of the grating versus the actual orientation they were trying to detect.
+            <ul>
+              <li>Manipulated in a blockwise fashion with two conditions; the congruent condition, where participants imagined a grating with the same orientation as the one they were detecting, and the incongruent condition, where they imagined a grating with a perpendicular orientation.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="region-pill" style="background:rgba(255,240,184,0.5)" onclick="toggleRegion(this)">
-      <span class="region-icon">🌐</span>
-      <h4>dmPFC</h4>
-      <div class="role">💭 The Metacognitive Hub</div>
-      <div class="detail">The dorsomedial prefrontal cortex — part of the brain's "thinking about thinking" network. It encoded the outcome of the binary reality judgment and communicated with the fusiform gyrus, forming a feedback loop between sensory signals and conscious decisions.</div>
+      <h4>Dependent</h4>
+      <div class="detail">
+        <ul>
+          <li><b>Detection responses:</b> the participant's decision on whether a stimulus was real.</li>
+          <ul>
+            <li>Measured by the participant's judgement indicating whether they believed a grating had really been presented on screen.</li>
+          </ul>
+          <li><b>Vividness rating of the imagery:</b> the clarity of participant's internal mental image.</li>
+          <ul>
+            <li>Measured by the participants' rating of vividness of their mental imagery after the reality judgement on every trial.</li>
+          </ul>
+          <li><b>The fMRI BOLD signal:</b> the brain's physiological response during tasks.
+          <ul>
+            <li>Used to track activity fluctuations and BOLD signals in certain regions (like the fusiform gyrus and frontal brain network) and analyzed the signals to find out how they tracked the reality signal and predicted behavioural confusions.</li>
+          </ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
