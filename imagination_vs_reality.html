@@ -932,8 +932,8 @@ function answer(saidReal) {
   const fb = document.getElementById('feedback');
   fb.className = 'feedback-bubble show ' + (correct ? 'correct' : 'wrong');
   fb.textContent = correct
-    ? (t.stimulus ? '🟢 Correct! Something was really there.' : '🟢 Correct! Nothing was there you resisted the imagery!')
-    : (t.stimulus ? '❌ Miss! Something was faintly present your imagery overcame it.' : '❌ False alarm! Nothing was there vivid imagery fooled you!');
+    ? (t.stimulus ? '🟢 Correct! Something was really there.' : '🟢 Correct! Nothing was there, you resisted the imagery!')
+    : (t.stimulus ? '❌ Miss! Something was faintly present.' : '❌ False alarm! Nothing was there!');
 
   document.getElementById('scoreDisplay').textContent = `Score: ${score}/${current+1}`;
 
