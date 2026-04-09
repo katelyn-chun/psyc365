@@ -188,7 +188,7 @@
   p strong { color: var(--dark); }
 
   /* ── CARD GRID ── */
-  .card-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); margin-top: 32px; }
+ .card-grid { display: grid; gap: 18px; grid-template-columns: repeat(4, 1fr); margin-top: 32px; align-items: stretch; }
 
   .card {
     background: rgba(255,255,255,0.7);
@@ -452,7 +452,7 @@
   <div class="card-grid">
     <div class="card" style="background: rgba(255,179,198,0.25);">
       <span class="card-icon">🧸</span>
-      <h3>Rationale: The Overlap Problem</h3>
+      <h3>The Rationale</h3>
        <p>When you imagine something vividly like a bear, an apple, or a face <strong>many of the same brain regions fire as when you actually perceive it.</strong> 
          Turns out the brain reuses its own perceptual machinery for mental imagery. 
          It's efficient, but it creates a problem:
@@ -467,9 +467,14 @@
     </div>
     <div class="card" style="background: rgba(184,237,217,0.25);">
       <span class="card-icon">💡</span>
-      <h3>The Research Question</h3>
-      <p> How does the brain distinguish imagined experiences from real perceptual experiences and what brain activity patterns predict whether something will be judged as real?
-        Is there a single neural "reality meter" in the brain? Where is it, and how does it work?</p>
+      <h3>The Big Questions</h3>
+      <p><strong>Big picture question:</strong> How does the brain tell whether a visual experience comes from the outside world or from imagination?</p>
+<p><strong>Research question:</strong> Which brain regions and neural signals predict whether people judge an experience as real versus imagined, especially when imagery is vivid enough to cause confusion?</p>
+ </div>
+    <div class="card" style="background:rgba(255,240,184,0.5);">
+      <span class="card-icon">💭</span>
+      <h3>The Hypothesis</h3>
+     <p><strong>Hypothesis:</strong> The hypothesis is that reality judgements depend on the strength of sensory activity in mid-level visual cortex, especially the fusiform gyrus, and this activity is integrated with a frontal network that makes the final reality decision.</p>
     </div>
   </div>
 </section>
@@ -840,14 +845,14 @@ function toggleRegion(el) {
 // ── GAME ENGINE ──
 const trials = [
   { stimulus: true,  congruent: true,  vividness: 4, correct: true,
-    prompt: "Imagine a bear walking LEFT ← to RIGHT →",
+    prompt: "Imagine lines tilting like this ///",
     explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: true,  vividness: 5, correct: false,
     prompt: "Imagine a bright sun rising over mountains ☀️",
     explain: "Nothing was really there but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm! 🫧" },
   { stimulus: true,  congruent: false, vividness: 2, correct: true,
-    prompt: "Imagine a bear sleeping curled up 🐻",
-    explain: "The grating was present, but your imagery was incongruent (different orientation) and low vividness. The real signal dominated clean perception. ✅" },
+    prompt: "Imagine lines tilting like this \\\",
+    explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: false, vividness: 1, correct: false,
     prompt: "Don't really try to imagine anything specific 💭",
     explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal easy 'not real' call. 💤" },
@@ -855,7 +860,7 @@ const trials = [
     prompt: "Imagine the MOST vivid striped pattern you can 🌈",
     explain: "Stimulus present + maximally vivid congruent imagery = fusiform overdrive. You almost certainly said 'real' and you were right, but the signal was so strong it could have fooled you even if nothing was there! ⚡" },
   { stimulus: false, congruent: true,  vividness: 3, correct: false,
-    prompt: "Imagine a medium-vivid tilted bear pattern 🐻〰️",
+    prompt: "Imagine a medium-vivid tilted pattern 🐻〰️",
     explain: "Nothing real just moderate imagery. Depending on your threshold, you may have been fooled. This is the sweet spot where Dijkstra et al. found the most interesting individual differences. 🎯" },
 ];
 
