@@ -785,22 +785,22 @@ function toggleRegion(el) {
 
 // ── GAME ENGINE ──
 const trials = [
-  { stimulus: true,  congruent: true,  vividness: 4, correct: true,
-    prompt: "Imagine lines tilting like this (///)",
-    explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
+  { stimulus: true,  congruent: true,  vividness: 3, correct: true,
+    prompt: "Imagine this pattern (///). Look for the same pattern.",
+    explain: "You were imagining the grating AND it was really there. The fusiform gyrus saw both signals overlap, making 'real' the right call." },
   { stimulus: false, congruent: true,  vividness: 5, correct: false,
     prompt: "Imagine lines tilting diagonally across the grid in either direction (///) or (\\\)",
     explain: "Nothing was really there but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm!" },
   { stimulus: true,  congruent: false, vividness: 2, correct: true,
-    prompt: "Imagine lines tilting like this (\\\)",
-    explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
+    prompt: "Imagine this pattern (\\\). Look for this pattern (///)",
+    explain: "You were imagining the grating in one direction BUT the stimulus was reversed. You might have struggled doing both, but the signal was really there." },
   { stimulus: false, congruent: false, vividness: 1, correct: false,
     prompt: "Don't really try to imagine anything specific 💭",
-    explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal easy 'not real' call." },
+    explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal, which makes an easy 'not real' call." },
   { stimulus: true,  congruent: true,  vividness: 5, correct: true,
-    explain: "Stimulus present + maximally vivid congruent imagery = fusiform overdrive. You almost certainly said 'real' and you were right, but the signal was so strong it could have fooled you even if nothing was there! ⚡" },
+    explain: "Stimulus present + maximally vivid congruent imagery = fusiform overdrive. You almost certainly said 'real' and you were right, but the signal was so strong it could have fooled you even if nothing was there!" },
   { stimulus: false, congruent: true,  vividness: 3, correct: false,
-    prompt: "Imagine a striped tilted pattern (///)",
+    prompt: "Imagine a striped tilted pattern (///). Look for the same pattern.",
     explain: "Nothing real just moderate imagery. Depending on your threshold, you may have been fooled." },
 ];
 
