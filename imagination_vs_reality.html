@@ -188,7 +188,7 @@
   p strong { color: var(--dark); }
 
   /* ── CARD GRID ── */
-  .card-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); margin-top: 32px; }
+.card-grid { display: grid; gap: 18px; grid-template-columns: repeat(2, 1fr); margin-top: 32px; align-items: stretch; }
 
   .card {
     background: rgba(255,255,255,0.7);
@@ -452,7 +452,7 @@
   <div class="card-grid">
     <div class="card" style="background: rgba(255,179,198,0.25);">
       <span class="card-icon">🧸</span>
-      <h3>Rationale: The Overlap Problem</h3>
+      <h3>The Rationale</h3>
        <p>When you imagine something vividly like a bear, an apple, or a face <strong>many of the same brain regions fire as when you actually perceive it.</strong> 
          Turns out the brain reuses its own perceptual machinery for mental imagery. 
          It's efficient, but it creates a problem:
@@ -467,9 +467,14 @@
     </div>
     <div class="card" style="background: rgba(184,237,217,0.25);">
       <span class="card-icon">💡</span>
-      <h3>The Research Question</h3>
-      <p> How does the brain distinguish imagined experiences from real perceptual experiences and what brain activity patterns predict whether something will be judged as real?
-        Is there a single neural "reality meter" in the brain? Where is it, and how does it work?</p>
+      <h3>The Questions</h3>
+      <p><strong>Big picture question:</strong> How does the brain tell whether a visual experience comes from the outside world or from imagination?</p>
+<p><strong>Research question:</strong> Which brain regions and neural signals predict whether people judge an experience as real versus imagined, especially when imagery is vivid enough to cause confusion?</p>
+ </div>
+    <div class="card" style="background:rgba(255,240,184,0.5);">
+      <span class="card-icon">💭</span>
+      <h3>The Hypothesis</h3>
+     <p><strong>Hypothesis:</strong> The hypothesis is that reality judgements depend on the strength of sensory activity in mid-level visual cortex, especially the fusiform gyrus, and this activity is integrated with a frontal network that makes the final reality decision.</p>
     </div>
   </div>
 </section>
@@ -633,6 +638,7 @@
 
   <div class="brain-card">
     <h3 style="font-weight:800;font-size:17px;color:var(--dark);margin-bottom:8px;">Behavioural Results</h3>
+    <p>Imagination reliably bled into reality judgments and felt more vivid when the congruent stimulus was present.</p>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
       <div style="background:rgba(184,237,217,0.4);border-radius:14px;padding:18px;text-align:center;">
@@ -648,6 +654,38 @@
         <p>Vividness was significantly boosted by the real stimulus in the congruent condition (p = 0.00002), but not the incongruent (BF = 0.89).</p>
       </div>
     </div>
+  </div>
+
+  <div class="brain-card" style="margin-bottom:24px;">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="flex:1;min-width:200px;">
+        <h3 style="font-weight:800;font-size:17px;color:var(--dark);margin-bottom:8px;">Computational Model</h3>
+        <p>M₀ is rejected over M₁, as M₁ provided a better fit. The brain combines imagery and perception additively, which means there is no clean firewall between what you imagine and what you see.</p>
+      </div>
+    </div>
+    <!-- Visual comparing 2 models -->
+    <figure style="margin-top: 32px; text-align: center;">
+    <img src="images\M0vsM1.png" alt="Performance of 2 models"
+         style="max-width:100%; border-radius:16px; box-shadow:0 4px 24px rgba(61,44,78,0.12); border:2px solid rgba(255,255,255,0.9);"
+         onerror="this.parentElement.innerHTML='<div style=\'background:rgba(201,184,240,0.2);border:2px dashed var(--lavender);border-radius:16px;padding:32px;text-align:center;\'><div style=\'font-size:32px;margin-bottom:10px;\'>🖼️</div><p style=\'color:var(--mid);font-weight:700;margin:0;\'>Model performance image not found.<br><span style=\'font-size:13px;font-weight:600;\'>Place your image at <code>images\M0vsM1.png</code> next to this HTML file.</span></p></div>'">
+    <figcaption style="margin-top:12px; font-size:14px; font-weight:700; color:var(--mid);">M₀ predicted the same detection rate for both conditions, while M₁ captured the separation (Dijkstra et al., 2025)</figcaption>
+  </figure>
+  </div>
+
+  <div class="brain-card" style="margin-bottom:24px;">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="flex:1;min-width:200px;">
+        <h3 style="font-weight:800;font-size:17px;color:var(--dark);margin-bottom:8px;">Neural System</h3>
+        <p>The fusiform gyrus tracks how strong the combined signal is, and the anterior insula makes reality judgement base on this. Early visual cortex and the intraparietal sulcus were both ruled out as reality monitors. EVC suppresses irrelevant signals, and IPS suppresses external inputs during stimulus-present trials.</p>
+      </div>
+    </div>
+    <!-- Visual comparing 2 models -->
+    <figure style="margin-top: 32px; text-align: center;">
+    <img src="images\fMRI.png" alt="fMRI scan results for reality judgement and image vividness"
+         style="max-width:100%; border-radius:16px; box-shadow:0 4px 24px rgba(61,44,78,0.12); border:2px solid rgba(255,255,255,0.9);"
+         onerror="this.parentElement.innerHTML='<div style=\'background:rgba(201,184,240,0.2);border:2px dashed var(--lavender);border-radius:16px;padding:32px;text-align:center;\'><div style=\'font-size:32px;margin-bottom:10px;\'>🖼️</div><p style=\'color:var(--mid);font-weight:700;margin:0;\'>fMRI image not found.<br><span style=\'font-size:13px;font-weight:600;\'>Place your image at <code>images\fMRI.png</code> next to this HTML file.</span></p></div>'">
+    <figcaption style="margin-top:12px; font-size:14px; font-weight:700; color:var(--mid);">fMRI results shows activation in same regions: bilateral fusiform gyrus (FG), bilateral intraparietal sulcus (IPS), and bilateral precentral sulcus (Dijkstra et al., 2025)</figcaption>
+  </figure>
   </div>
 
   <div class="brain-card" style="margin-bottom:24px;">
@@ -807,14 +845,14 @@ function toggleRegion(el) {
 // ── GAME ENGINE ──
 const trials = [
   { stimulus: true,  congruent: true,  vividness: 4, correct: true,
-    prompt: "Imagine lines tilting LEFT to RIGHT",
+    prompt: "Imagine lines tilting like this ///",
     explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: true,  vividness: 5, correct: false,
     prompt: "Imagine a bright sun rising over mountains ☀️",
     explain: "Nothing was really there but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm! 🫧" },
   { stimulus: true,  congruent: false, vividness: 2, correct: true,
-    prompt: "Imagine a bear sleeping curled up 🐻",
-    explain: "The grating was present, but your imagery was incongruent (different orientation) and low vividness. The real signal dominated clean perception. ✅" },
+    prompt: "Imagine lines tilting like this (\\\)",
+    explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: false, vividness: 1, correct: false,
     prompt: "Don't really try to imagine anything specific 💭",
     explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal easy 'not real' call. 💤" },
