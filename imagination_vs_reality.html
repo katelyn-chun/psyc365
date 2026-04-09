@@ -447,7 +447,7 @@
 
 <!-- ══ RATIONALE ══ -->
 <section id="rationale" class="fade-in">
-  <div class="section-tag" style="background:var(--pink);color:var(--dark)">🌸 The Puzzle</div>
+  <div class="section-tag" style="background:var(--pink);color:var(--dark)">The Puzzle</div>
   <h2>Your brain is a remarkably bad liar detector… for itself.</h2>
 
   <p>When you imagine something vividly a bear, an apple, a face <strong>many of the same brain regions fire as when you actually perceive it.</strong> The brain reuses its own perceptual machinery for mental imagery. It's efficient, but it creates a problem: how does the brain ever know the difference between what's real and what's imagined?</p>
@@ -477,51 +477,56 @@
 
 <!-- ══ RESEARCH DESIGN ══ -->
 <section id="design" class="fade-in">
-  <div class="section-tag" style="background:var(--lavender);color:var(--dark)">🔬 The Experiment</div>
-  <h2>Making bears appear and disappear in the brain.</h2>
-
-  <p>The team developed a clever fMRI paradigm to pit imagination against perception in real time. Here's how it worked:</p>
+  <div class="section-tag" style="background:var(--lavender);color:var(--dark)">The Experiment</div>
+  <h2>Study Design</h2>
 
   <div class="timeline">
     <div class="tl-item">
-      <div class="tl-dot" style="background:var(--pink);">🐻</div>
+      <div class="tl-dot" style="background:var(--pink);"></div>
       <div class="tl-body">
-        <h4>26 human participants in an fMRI scanner</h4>
-        <p>Each trial, they were cued to imagine a tilted grating (striped bars) of a specific orientation like a bear trying to see stripes.</p>
+        <h4>Basic Setup</h4>
+        <p>26 participants are put in an fMRI scanner. They were shown a screen with visual "noise", which looked like TV static.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:var(--lavender);">🌫️</div>
+      <div class="tl-dot" style="background:var(--lavender);"></div>
       <div class="tl-body">
-        <h4>A faint real stimulus or nothing was shown</h4>
-        <p>A barely-visible grating was embedded in visual noise. Sometimes it matched what they were imagining (congruent). Sometimes it didn't. Sometimes there was nothing at all.</p>
+        <h4>Task</h4>
+        <p>They were asked two things at once: detecting whether a grating was actually appearing in the noise, and imagine a grating in their head. The stripes were made so faint that participants could only detect them correctly about 70% of the time.</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:var(--mint);">✅</div>
+      <div class="tl-dot" style="background:var(--mint);"></div>
       <div class="tl-body">
-        <h4>Participants judged: "Was something really there?"</h4>
-        <p>They also rated how vividly they'd imagined the grating. This gave researchers two continuous measures: <strong>perceptual reality judgment</strong> and <strong>imagery vividness.</strong></p>
+        <h4>Congruent vs. Incongruent</h4>
+        <p>Participants were split into two conditions per block: Congruent (imagine and look for a left-leaning stripe) and Incongruent (imagine a left-leaning stripe while looking for a right-leaning one)</p>
       </div>
     </div>
     <div class="tl-item">
-      <div class="tl-dot" style="background:var(--peach);">🧠</div>
+      <div class="tl-dot" style="background:var(--peach);"></div>
       <div class="tl-body">
-        <h4>fMRI measured brain activity trial-by-trial</h4>
-        <p>Crucially, researchers could correlate neural signals with each individual judgment catching the brain in the act of confusing imagination for reality.</p>
+        <h4>Participants judged: "Was something really there?</h4>
+        <p>On each trial, they made a reality judgment and rated the vividness of their mental imagery.</p>
       </div>
     </div>
   </div>
 
+  <figure style="margin-top: 32px; text-align: center;">
+    <img src="images/Experiment%20design.png" alt="Experiment design"
+         style="max-width:100%; border-radius:16px; box-shadow:0 4px 24px rgba(61,44,78,0.12); border:2px solid rgba(255,255,255,0.9);"
+         onerror="this.parentElement.innerHTML='<div style=\'background:rgba(201,184,240,0.2);border:2px dashed var(--lavender);border-radius:16px;padding:32px;text-align:center;\'><div style=\'font-size:32px;margin-bottom:10px;\'>🖼️</div><p style=\'color:var(--mid);font-weight:700;margin:0;\'>Experiment design image not found.<br><span style=\'font-size:13px;font-weight:600;\'>Place your image at <code>images/Experiment%20design.png</code> next to this HTML file.</span></p></div>'">
+    <figcaption style="margin-top:12px; font-size:14px; font-weight:700; color:var(--mid);">Experiment design (Dijkstra et al., 2025)</figcaption>
+  </figure>
+
   <div class="brain-card">
-    <h3 style="font-weight:800; font-size:18px; color:var(--dark); margin-bottom:6px;">📐 The Reality Threshold Model</h3>
-    <p style="margin-bottom:0;">The researchers tested a computational model: the brain doesn't separate imagery from perception it adds them together into a <strong>combined "reality signal."</strong> If that signal crosses a threshold → "it's real." If not → "must be my imagination." Simple, elegant, and testable.</p>
+    <h3 style="font-weight:800; font-size:18px; color:var(--dark); margin-bottom:6px;">The Reality Threshold Model</h3>
+    <p style="margin-bottom:0;">The researchers tested the <strong>Reality threshold model (M₁)</strong>, where imaginary and perception signals are added together into a single "reality signal" with a threshold to determines whether something is judged as real, versus a <strong>Null model (M₀)</strong>, where imaginary and perception signals are driven by separate, independent signals.</p>
   </div>
 </section>
 
 <!-- ══ INTERACTIVE GAME ══ -->
 <div id="game-section" class="fade-in" style="padding: 80px 24px; max-width:900px; margin:0 auto;">
-  <div class="section-tag" style="background:var(--sky);color:var(--dark)">🎮 Try It Yourself</div>
+  <div class="section-tag" style="background:var(--sky);color:var(--dark)">Try It Yourself</div>
   <h2 style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,44px); margin-bottom:12px; color:var(--dark);">Can YOU tell real from imagined?</h2>
   <p style="font-size:17px;line-height:1.75;color:var(--mid);margin-bottom:24px;">Experience what participants felt. Each round you'll be asked to imagine a tilted grating. Then you'll see a noisy image and judge whether something was really there. Watch how vivid imagination can fool you!</p>
 
@@ -530,7 +535,7 @@
       <div style="font-size:56px;margin-bottom:16px;">🐻‍❄️</div>
       <p class="game-prompt">Ready to test your reality monitoring?</p>
       <p class="game-sub">6 trials · each one a little different</p>
-      <button class="btn btn-start" onclick="startGame()">🎯 Start the experiment</button>
+      <button class="btn btn-start" onclick="startGame()">Start the experiment</button>
     </div>
 
     <div id="game-state-play" style="display:none;">
@@ -722,7 +727,7 @@
   </div>
 
   <div class="brain-card" style="margin-top:32px;">
-    <h3 style="font-weight:800;font-size:18px;color:var(--dark);margin-bottom:16px;">🔍 Strengths & Limitations</h3>
+    <h3 style="font-weight:800;font-size:18px;color:var(--dark);margin-bottom:16px;">Strengths & Limitations</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div>
         <div style="font-size:13px;font-weight:800;color:var(--sage);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">✅ Strengths</div>
