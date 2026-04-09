@@ -845,13 +845,13 @@ function toggleRegion(el) {
 // ── GAME ENGINE ──
 const trials = [
   { stimulus: true,  congruent: true,  vividness: 4, correct: true,
-    prompt: "Imagine lines tilting like this ///",
+    prompt: "Imagine lines tilting like this &#47;&#47;&#47;",
     explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: true,  vividness: 5, correct: false,
     prompt: "Imagine a bright sun rising over mountains ☀️",
     explain: "Nothing was really there but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm! 🫧" },
   { stimulus: true,  congruent: false, vividness: 2, correct: true,
-    prompt: "Imagine lines tilting like this (\\\)",
+    prompt: "Imagine lines tilting like this &#92;&#92;&#92;",
     explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: false, vividness: 1, correct: false,
     prompt: "Don't really try to imagine anything specific 💭",
