@@ -784,7 +784,7 @@
   </div>
 
   <div class="brain-card" style="margin-top:32px;">
-    <h3 style="font-weight:800;font-size:18px;color:var(--dark);margin-bottom:16px;">Strengths & Limitations</h3>
+    <h3 style="font-weight:800;font-size:18px;color:var(--dark);margin-bottom:16px;">Critique</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div>
         <div style="font-size:13px;font-weight:800;color:var(--sage);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px;">Strengths</div>
@@ -848,7 +848,7 @@ const trials = [
     prompt: "Imagine lines tilting like this &#47;&#47;&#47;",
     explain: "You were imagining the grating AND it was really there a congruent trial. The fusiform gyrus saw both signals overlap, making 'real' the right call. ✅" },
   { stimulus: false, congruent: true,  vividness: 5, correct: false,
-    prompt: "Imagine a bright sun rising over mountains ☀️",
+    prompt: "Imagine lines tilting diagonally across the grid in either direction (///) or (\\\)",
     explain: "Nothing was really there but vivid imagination can push the fusiform gyrus signal over threshold. If you said 'real,' you just experienced a hallucination-like false alarm! 🫧" },
   { stimulus: true,  congruent: false, vividness: 2, correct: true,
     prompt: "Imagine lines tilting like this &#92;&#92;&#92;",
@@ -857,10 +857,10 @@ const trials = [
     prompt: "Don't really try to imagine anything specific 💭",
     explain: "Nothing was there, and imagination was weak. The fusiform gyrus had very little signal easy 'not real' call. 💤" },
   { stimulus: true,  congruent: true,  vividness: 5, correct: true,
-    prompt: "Imagine the MOST vivid striped pattern you can 🌈",
+    prompt: "Imagine a striped (///) pattern",
     explain: "Stimulus present + maximally vivid congruent imagery = fusiform overdrive. You almost certainly said 'real' and you were right, but the signal was so strong it could have fooled you even if nothing was there! ⚡" },
   { stimulus: false, congruent: true,  vividness: 3, correct: false,
-    prompt: "Imagine a medium-vivid tilted pattern 🐻〰️",
+    prompt: "Imagine a striped tilted pattern (///)",
     explain: "Nothing real just moderate imagery. Depending on your threshold, you may have been fooled. This is the sweet spot where Dijkstra et al. found the most interesting individual differences. 🎯" },
 ];
 
